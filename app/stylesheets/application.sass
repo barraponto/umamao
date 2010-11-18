@@ -1,4 +1,16 @@
 @import screen
+@import compass/utilities
 
 #container
   +container
+
+  #top-bar
+    +column(8)
+    +prepend(16)
+
+    .menu
+      +no-bullets
+      +inline-block-list
+
+      a
+        +hover-link
