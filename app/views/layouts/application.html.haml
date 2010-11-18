@@ -13,14 +13,13 @@
   %body.bp
     = render :partial => "shared/analytics"
     #container{:class => @current_class}
+      = render :partial => "shared/search"
       = render :partial => "shared/topbar"
       #header
         = current_group.head
         #main-bar{:class => @active_tab}
           #logo
             = link_to image_tag("default_logo.png", :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
-          = render :partial => "shared/user_navigation"
-          .clear
 
           -announcements = current_announcements(session[:announcement_hide_time])
           -unless announcements.empty?
