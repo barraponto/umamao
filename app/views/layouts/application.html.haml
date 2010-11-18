@@ -13,7 +13,6 @@
   %body.bp
     = render :partial => "shared/analytics"
     #container{:class => @current_class}
-      = render :partial => "shared/search"
       = render :partial => "shared/topbar"
       #header
         = current_group.head
@@ -44,6 +43,7 @@
                   =link_to t("sessions.new.with_facebook"), oauth_authorize_path, :title => "Facebook", :id => "facebook_auth"
                   =t(".now")
       #wrapper
+        = render :partial => "shared/search"
         #main
           = render :partial => "shared/ads/header_ads"
           #block-text.block
