@@ -1,32 +1,5 @@
 @import screen
 @import compass/utilities
 
-#container, #main-bar
-  +container
-
-#logo
-  +column(6)
-
-.search
-  +column(6)
-  +append(1)
-
-  #search-form
-    +span(6)
-
-#top-bar
-  +column(6, true)
-  .menu
-    +no-bullets
-    +inline-block-list
-
-    a
-      +hover-link
-      font-size: 1.167em
-      line-height: 3em
-      vertical-align: middle
-      padding: 0 0.25em
-        
-      img
-        vertical-align: middle
-        padding: 0.25em
+@import layout
+@import search
