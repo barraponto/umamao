@@ -1,0 +1,46 @@
+#header
+  margin-top: 2em
+  clear: both
+
+#container, #main-bar
+  +container
+
+#main-bar
+  overflow: visible
+
+#logo
+  +column(6)
+
+#search
+  +column(6)
+
+  .search-form-wrap
+    border: 1px solid black
+
+  #search-field
+    border: none
+    width: 100%
+
+#top-bar
+  +column(6, true)
+  +prepend(1)
+  .menu
+    +no-bullets
+    +inline-block-list
+
+    a
+      +hover-link
+      font-size: 1.167em
+      line-height: 3em
+      vertical-align: middle
+      padding: 0 0.25em
+        
+      img
+        vertical-align: middle
+        padding: 0.25em
+
+#main
+  +column(13)
+
+#sidebar
+  +column(6, true)

@@ -1,0 +1,31 @@
+#search
+
+  .search-form-wrap
+    position: relative
+    margin-top: 0.75em
+    padding: 0.25em
+
+  #autocomplete-results
+    +column(9)
+    position: absolute
+    left: -1px 
+    top: 2em 
+
+    .item-box-list
+      +no-bullets
+      background-color: white
+      border: 1px solid black
+      padding: 0
+      margin: 0
+
+      .item-box-item
+        padding: 0.25em
+        cursor: pointer
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+
+        &:hover
+          background: #eee
+          color: blue
+
