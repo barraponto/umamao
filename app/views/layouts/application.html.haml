@@ -50,14 +50,11 @@
           #block-text.block
             .secondary-navigation{:class => @active_subtab.to_s}
               = yield :subtabs
-              .clear
             .content
-              %p
-                = show_flash_messages(:class => "flash", :markdown => true)
+              = show_flash_messages(:class => "flash", :markdown => true)
               = render :partial => "shared/ads/content_ads"
               .inner
                 = content_for?(:content) ? yield(:content) : yield
-                .clear
         #sidebar
           - if content_for?(:actions)
             %ul.actions

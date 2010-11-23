@@ -2,7 +2,7 @@
   %meta{:name => "description", :content => markdown(current_group.description).gsub(/<\/?[^>]*>/, "")[0, 255] }
 
 - content_for :subtabs do
-  .navtitle
+  %li
     = t(".recent_activities", :default => "Recent Activities")
 
 %ul.items#news_items
