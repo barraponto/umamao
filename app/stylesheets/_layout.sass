@@ -46,12 +46,33 @@
 #sidebar
   +column(7, true)
   +prepend(2)
+  font-size: 13px
 
   .actions
     margin-bottom: 1em
 
   .block
     margin-bottom: 1em
+
+  #users.widget
+
+    ul.list
+      margin-bottom: 0.5em
+      margin-top: 1px
+      +no-bullets
+      +prepend(1)
+
+      li
+        padding: 0.5em 0
+
+        .gravatar
+          +column(1)
+
+        .item
+          +prepend(1)
+
+    .more
+      +prepend(1)
 
 #footer
   text-align: center

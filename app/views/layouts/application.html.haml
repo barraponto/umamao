@@ -57,7 +57,8 @@
                 = content_for?(:content) ? yield(:content) : yield
         #sidebar
           - if content_for?(:actions)
-            %ul.actions= yield :actions
+            %ul.actions
+              = yield :actions
 
           = yield :sidebar
           = render :partial => "shared/ads/context_panel_ads"
