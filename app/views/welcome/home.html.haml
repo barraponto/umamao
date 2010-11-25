@@ -31,11 +31,12 @@
 
     .clear
 
-- content_for :sidebar do
-  .block{:style => 'font-size: 1.1em; font-weight: bold; text-align: center'}
-    = link_to t('invitations.invite'), invitations_path
-    %hr{:style => 'margin-top: 1em'}
-    = t('.looking_for', :link => link_to(t('.exercises'), topic_path('Resolução-de-exercício')))
+- content_for :actions do
+  %li= link_to t("layouts.application.ask_question"), new_question_path, :rel => 'nofollow'
+  %li= link_to t('invitations.invite'), invitations_path
+  %li= t('.looking_for', :link => link_to(t('.exercises'), topic_path('Resolução-de-exercício')))
+
+-content_for :sidebar do
 
   - current_group.widgets.each do |widget|
     .widget.block{:id => widget.name}
