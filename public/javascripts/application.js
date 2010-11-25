@@ -79,9 +79,9 @@ $(document).ready(function() {
 
   $('#news_items .answer').each(function(){
     if ($(this).height() > 85) {
-      $(this).addClass('large');
+      $(this).addClass('resize');
     }
-  }).filter('.large').append(
+  }).filter('.resize').append(
     '<div class="more"><span class="more-link">(mais)</span></div>'
   ).find('.more-link').click(function(){
     $(this).parents('.answer').addClass('expanded');
