@@ -8,8 +8,6 @@
     overflow: auto
 
     .summary
-      +column(12)
-      +prepend(1)
 
       h3.title
         font-size: 1.5em
@@ -18,3 +16,20 @@
 
         a
           +hover-link
+
+#sidebar
+  #users
+
+    ul
+      +no-bullets
+      padding: 0
+
+      li
+        padding: 0.5em 0
+
+        .gravatar
+          width: 32px
+          float: left
+
+        .item
+          margin-left: 48px

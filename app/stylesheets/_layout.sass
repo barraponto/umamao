@@ -1,18 +1,19 @@
 #header
   margin-top: 2em
   clear: both
+  overflow: auto
 
-#container, #main-bar
+#container, #main-bar, #footer
   +container
 
 #main-bar
   overflow: visible
 
 #logo
-  +column(6)
+  +column(7)
 
 #search
-  +column(6)
+  +column(8)
 
   .search-form-wrap
     border: 1px solid black
@@ -22,7 +23,7 @@
     width: 100%
 
 #top-bar
-  +column(6, true)
+  +column(8, true)
   +prepend(1)
   .menu
     +no-bullets
@@ -34,13 +35,21 @@
       line-height: 3em
       vertical-align: middle
       padding: 0 0.25em
-        
+
       img
         vertical-align: middle
         padding: 0.25em
 
 #main
-  +column(13)
+  +column(15)
 
 #sidebar
-  +column(6, true)
+  +column(7, true)
+  +prepend(2)
+
+#footer
+  text-align: center
+
+  ul
+    +no-bullets
+    +inline-block-list
