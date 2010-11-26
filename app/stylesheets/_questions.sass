@@ -1,14 +1,39 @@
-.question-title-col
-  +column(14, true)
-  font-size: 21px
+#question
 
-.question-body-col
-  clear: both
+  .question-title-col
+    +column(14, true)
+    font-size: 21px
 
-  .topic-list
-    +inline-block-list
+  .question-body-col
+    clear: both
 
-    .topic
-      padding: 0.25em
-      background-color: #eee
-      +border-radius
+    .topic-list
+      +inline-block-list
+
+      .topic
+        padding: 0.25em 0.5em
+        background-color: #eee
+        +border-radius
+        margin: 0.25em 0.1em
+
+        a
+          +unstyled-link
+          cursor: pointer
+
+          &:hover
+            color: #0077CC
+
+  textarea
+    width: 100%
+
+#new-answer-wrapper
+  +column(15)
+
+  #new_answer
+    width: 100%
+
+    .wmd-button-row
+      margin-bottom: 0
+
+    textarea
+      width: 100%

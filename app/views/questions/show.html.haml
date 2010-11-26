@@ -1,6 +1,3 @@
-- content_for :js do
-  = javascript_include_merged :show
-
 - @current_class = 'question hentry entry post'
 
 - show_close_request_form = !@question.closed && logged_in? && @question.can_be_requested_to_close_by?(current_user)
@@ -13,12 +10,19 @@
 
 - question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : '')))
 
+- source = question_path(@question)
+
+- content_for :js do
+  = javascript_include_merged :show
+
 - content_for :head do
   %meta{:name => "keywords", :content => clean_seo_keywords(@question.topics.map(&:title).dup, @question.title)}
   %meta{:name => "description", :content => question_body.gsub(/<\/?[^>]*>/, "")[0, 255] }
   %link{:rel => "canonical", :href => question_url(@question) }
 
-- source = question_path(@question)
+- content_for :actions do
+  %li= link_to t("layouts.application.ask_question"), new_question_path, :rel => 'nofollow'
+
 = error_messages_for 'answer'
 
 #question
@@ -95,7 +99,6 @@
     .comments
       - @question.comments.each do |comment|
         = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
-    .clear
     - if logged_in?
       = link_to t("comments.shared.add_comment"), new_question_comment_path(@question), :id => "add_comment_link", :rel => 'nofollow'
     .forms
@@ -118,51 +121,38 @@
 -# New answer form
 - unless @question.closed
   - if logged_in?
-    = form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "form mainAnswerForm bp"} do |f|
-      = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
-      .group.navform
-        = submit_tag t("answers.form.submit"), :class => "button"
-      .clear
+    #new-answer-wrapper
+      = form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "form mainAnswerForm bp"} do |f|
+        = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
+        .group.navform
+          = submit_tag t("answers.form.submit"), :class => "button"
   - else
-    %p
-      = t("answers.form.not_logged", :link => new_user_session_path)
+    %p= t("answers.form.not_logged", :link => new_user_session_path)
 
 - content_for :sidebar do
   - if AppConfig.enable_sharing
     .block
-      %h3
-        = t(".share")
+      %h3= t(".share")
       .content
         %ul.share
-          %li
-            = render :partial => "identica"
+          %li= render :partial => "identica"
           - if current_group.domain != AppConfig.domain
-            %li
-              = render :partial => "shapado"
-          %li
-            = render :partial => "twitter"
-          %li
-            = render :partial => "linkedin"
-          %li
-            = render :partial => "think"
-          %li
-            = render :partial => "facebook"
-      .clear
+            %li= render :partial => "shapado"
+          %li= render :partial => "twitter"
+          %li= render :partial => "linkedin"
+          %li= render :partial => "think"
+          %li= render :partial => "facebook"
 
   - if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group))
     - unless @question.flags.count == 0
       .block
-        %h3
-          = t(:flags, :scope => "activerecord.models")
-        .content
-          = render :partial => "flags/list", :locals => {:flaggeable => @question}
+        %h3= t(:flags, :scope => "activerecord.models")
+        .content= render :partial => "flags/list", :locals => {:flaggeable => @question}
 
     - unless @question.close_requests.size == 0
       .block
-        %h3
-          = t(:prural_name, :scope => "close_requests.model")
-        .content
-          = render :partial => "close_requests/list", :locals => {:question => @question}
+        %h3= t(:prural_name, :scope => "close_requests.model")
+        .content= render :partial => "close_requests/list", :locals => {:question => @question}
 
   - related_questions = Question.related_questions(@question, :language => find_languages)
   - if @follow_up_questions.present?
@@ -172,22 +162,15 @@
       .content
         %ul.list
           - @follow_up_questions.each do |q|
-            %li
-              = link_to h(q.title), question_path(q), :title => truncate(strip_tags(q.body), :length => 200)
-
-  %br
+            %li= link_to h(q.title), question_path(q), :title => truncate(strip_tags(q.body), :length => 200)
 
   - if !related_questions.empty?
     .block
-      %h3
-        = t(".related_questions")
+      %h3= t(".related_questions")
       .content
         %ul.list
           - related_questions.each do |rq|
-            %li
-              = link_to h(rq.title), question_path(rq), :title => truncate(strip_tags(rq.body), :length => 200)
-
-  %br
+            %li= link_to h(rq.title), question_path(rq), :title => truncate(strip_tags(rq.body), :length => 200)
 
   .author.user_info.vcard
     .user_data
@@ -201,7 +184,7 @@
           %span.country-name
             = t("global.from", :site => @question.user.country_name)
             = country_flag(@question.user.country_code, @question.user.country_name)
-    .clear
-  %span{:style => 'color: #999'}
+
+  .audience-size
     = t('.topic_followers',
         :count => @question.topics.map{|t| t.follower_ids.size }.inject(0) {|sum, count| sum + count})
