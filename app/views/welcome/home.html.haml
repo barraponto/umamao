@@ -2,8 +2,9 @@
   %meta{:name => "description", :content => markdown(current_group.description).gsub(/<\/?[^>]*>/, "")[0, 255] }
 
 - content_for :subtabs do
-  %li
-    = t(".recent_activities", :default => "Recent Activities")
+  %ul
+    %li= t(".recent_activities", :default => "Recent Activities")
+    %li= link_to t("layouts.application.unanswered"), unanswered_questions_path
 
 %ul.items#news_items
   - if @news_items.empty?

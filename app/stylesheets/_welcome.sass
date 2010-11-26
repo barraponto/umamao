@@ -1,18 +1,105 @@
 #news_items
-  +no-bullets
   padding: 0
   margin: 0
 
+  > li
+    +no-bullet
+
   .entry
     margin: 1em 0
-    overflow: auto
+    overflow: visible
 
-    .summary
+    h3
+      margin-bottom: 0.5em
 
-      h3.title
-        font-size: 1.5em
-        line-height: 1.5em
-        margin-bottom: 0.5em
+    .origin
+      margin-bottom: 0.75em
 
-        a
-          +hover-link
+    .answer
+      +prepend(1)
+      +column(13)
+
+      .vote-col
+        +column(1)
+        text-align: center
+
+        button.arrow
+          background: none
+          padding: 0
+          border: 0
+          cursor: pointer
+
+        .votes_average
+          margin-right: 0.25em
+          padding: 0.25em
+          background-color: #eee
+          +border-radius
+          font-size: 0.8em
+          display: none
+
+      .body-col
+        +prepend(1)
+
+        pre
+          white-space: pre-wrap
+
+        .user_data
+          border-bottom: 1px dotted #AAAAAA
+          display: inline-block
+          margin-bottom: 0.5em
+          padding-bottom: 0.25em
+
+          a
+            +hover-link
+
+      &.own
+        .votes_average
+          display: block
+        img
+          display: none
+
+      &.resize
+        height: 85px
+        position: relative
+        overflow: hidden
+
+        .votes_average
+          display: block
+
+        button
+          display: none
+
+        .more
+          background-color: white
+          bottom: 0
+          position: absolute
+          text-align: center
+          cursor: pointer
+          color: #538DC2
+          padding-top: 5px
+          +column(13)
+          +prepend(1)
+
+          .more-link
+            display: block
+            border-top: 2px dashed #EEEEEE
+
+      &.expanded
+        height: auto
+        overflow: visible
+
+        .votes_average
+          display: none
+
+        button
+          display: block
+
+        .more
+          display: none
+
+          a
+            +unstyled-link
+
+    .info
+      clear: both
+      text-align: right

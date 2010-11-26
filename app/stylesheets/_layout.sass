@@ -12,16 +12,6 @@
 #logo
   +column(7)
 
-#search
-  +column(8)
-
-  .search-form-wrap
-    border: 1px solid black
-
-  #search-field
-    border: none
-    width: 100%
-
 #top-bar
   +column(8, true)
   +prepend(1)
@@ -43,6 +33,9 @@
 #main
   +column(15)
 
+  .secondary-navigation
+    +inline-block-list
+
 #sidebar
   +column(7, true)
   +prepend(2)
@@ -63,10 +56,11 @@
       +prepend(1)
 
       li
-        padding: 0.5em 0
+        padding: 0.25em 0
 
         .gravatar
           +column(1)
+          padding-top: 1px
 
         .item
           +prepend(1)

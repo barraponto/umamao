@@ -20,15 +20,11 @@
   %link{:rel => "canonical", :href => question_url(@question) }
 
 - content_for :subtabs do
-  %table
-    %tr
-      %td
-        = vote_box(@question, question_path(@question), @question.closed)
-      %td
-        %h1.navtitle.title.entry-title
-          &= @question.title
-          - if @question.closed
-            = " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
+  = vote_box(@question, question_path(@question), @question.closed)
+  %h1.navtitle.title.entry-title
+    &= @question.title
+    - if @question.closed
+      = " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
 - source = question_path(@question)
 = error_messages_for 'answer'

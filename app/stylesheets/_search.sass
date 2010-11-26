@@ -1,9 +1,16 @@
 #search
+  +column(8)
 
   .search-form-wrap
+    border: 1px solid black
     position: relative
     margin-top: 0.75em
     padding: 0.25em
+
+  #search-field
+    border: none
+    width: 100%
+    width:100%;
 
   #search-results
     +column(12)
@@ -16,6 +23,7 @@
     padding: 0
     margin: 0
     font-size: 1.2em
+    z-index: 2
 
     li
       padding: 0.25em
@@ -24,7 +32,7 @@
       white-space: nowrap
       text-overflow: ellipsis
 
-      &:hover
+      &.active
         background: #eee
         color: blue
 
