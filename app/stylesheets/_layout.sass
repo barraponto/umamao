@@ -1,10 +1,11 @@
+#wrapper, #main-bar, #footer
+  +container
+  +pie-clearfix
+
 #header
-  margin-top: 2em
+  margin: 2em 0 1em
   clear: both
   overflow: visible
-
-#container, #main-bar, #footer
-  +container
 
 #main-bar
   overflow: visible
@@ -33,8 +34,19 @@
 #main
   +column(15)
 
-  .secondary-navigation
+  .subtabs
     +inline-block-list
+
+    li
+      font-size: 18px
+      line-height: 18px
+      text-align: center
+      padding: 0.75em 0
+
+    $tabwidth: 99%
+    @for $i from 1 through 5
+      &.subtabs-#{$i} li
+        width: $tabwidth / $i
 
 #sidebar
   +column(7, true)
@@ -42,7 +54,13 @@
   font-size: 13px
 
   .actions
+    padding: 0
+    +no-bullets
     margin-bottom: 1em
+    font-size: 1.3em
+
+    li
+      +prepend(1)
 
   .block
     margin-bottom: 1em
@@ -71,6 +89,7 @@
 #footer
   text-align: center
 
-  ul
+  > ul
     +no-bullets
     +inline-block-list
+    margin: 1em 0
