@@ -1,11 +1,6 @@
 /* AutoSuggest CSS - Version 1.2  */
 /* Used in all-purpose search box */
 
-form#search-form {
-    width: 360px;
-    margin-right: 20px;
-}
-
 input#search-field {
     width: 100%;
 }

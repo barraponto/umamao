@@ -1,5 +1,4 @@
-@import "compass/utilities/lists/horizontal-list"
-@import "compass/utilities/general/tag-cloud"
+@import compass
 
 @import colors
 @import buttons
@@ -9,9 +8,7 @@
 @import ./base
 
 @import ./items
-@import ./main_bar
 @import ./announcements
-@import ./top_bar
 @import ./topics
 @import ./questions
 @import ./vote_box
@@ -27,3 +24,36 @@
 @import ./manage_widgets
 
 @import ./navigation
+
+@import search
+
+#header
+  margin: 2em 0 1em
+  clear: both
+  overflow: visible
+
+#main-bar
+  +container
+  +pie-clearfix
+  overflow: visible
+
+#logo
+  +column(7)
+
+#top-bar
+  +column(8, true)
+  +prepend(1)
+  .menu
+    +no-bullets
+    +inline-block-list
+
+    a
+      +hover-link
+      font-size: 1.167em
+      line-height: 3em
+      vertical-align: middle
+      padding: 0 0.25em
+
+      img
+        vertical-align: middle
+        padding: 0.25em

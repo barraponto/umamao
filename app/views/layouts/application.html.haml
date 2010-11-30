@@ -12,38 +12,38 @@
 
   %body
     = render :partial => "shared/analytics"
+    #header
+      = current_group.head
+      #main-bar{:class => @active_tab}
+        #logo
+          = link_to image_tag("default_logo.png", :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
+
+        = render :partial => "shared/search"
+        = render :partial => "shared/topbar"
+
+        -announcements = current_announcements(session[:announcement_hide_time])
+        -unless announcements.empty?
+          #announcement
+            #announcement_message
+              -announcements.each do |announcement|
+                =markdown(announcement.message)
+            = link_to t('announcements.close'), hide_announcements_path, :id => "hide_announcement", :style => 'float: right'
+            .clear
+
+        -if !logged_in?
+          -if AppConfig.twitter["activate"] && request.referrer =~ %r{^https?://(www\.){0,1}twitter\.com}
+            .flash
+              .message.notice.highlight_for_user{:style => "padding: 8px 4px; font-weight: bold"}
+                =t(".welcome_from")
+                =link_to t("sessions.new.with_twitter"), twitter_authorize_path, :title => "Twitter", :id => "twitter_auth", :class => "highlight_for_user"
+                =t(".now")
+          -elsif AppConfig.facebook["activate"] && request.referrer =~ %r{^https?://(www\.){0,1}facebook\.com}
+            .flash
+              .message.notice.highlight_for_user{:style => "padding: 8px 4px; font-weight: bold"}
+                =t(".welcome_from")
+                =link_to t("sessions.new.with_facebook"), oauth_authorize_path, :title => "Facebook", :id => "facebook_auth"
+                =t(".now")
     #container{:class => @current_class}
-      = render :partial => "shared/topbar"
-      #header
-        = current_group.head
-        #main-bar{:class => @active_tab}
-          #logo
-            = link_to image_tag("default_logo.png", :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
-          = render :partial => "shared/user_navigation"
-          .clear
-
-          -announcements = current_announcements(session[:announcement_hide_time])
-          -unless announcements.empty?
-            #announcement
-              #announcement_message
-                -announcements.each do |announcement|
-                  =markdown(announcement.message)
-              = link_to t('announcements.close'), hide_announcements_path, :id => "hide_announcement", :style => 'float: right'
-              .clear
-
-          -if !logged_in?
-            -if AppConfig.twitter["activate"] && request.referrer =~ %r{^https?://(www\.){0,1}twitter\.com}
-              .flash
-                .message.notice.highlight_for_user{:style => "padding: 8px 4px; font-weight: bold"}
-                  =t(".welcome_from")
-                  =link_to t("sessions.new.with_twitter"), twitter_authorize_path, :title => "Twitter", :id => "twitter_auth", :class => "highlight_for_user"
-                  =t(".now")
-            -elsif AppConfig.facebook["activate"] && request.referrer =~ %r{^https?://(www\.){0,1}facebook\.com}
-              .flash
-                .message.notice.highlight_for_user{:style => "padding: 8px 4px; font-weight: bold"}
-                  =t(".welcome_from")
-                  =link_to t("sessions.new.with_facebook"), oauth_authorize_path, :title => "Facebook", :id => "facebook_auth"
-                  =t(".now")
       #wrapper
         #main
           = render :partial => "shared/ads/header_ads"
