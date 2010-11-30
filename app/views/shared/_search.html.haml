@@ -1,0 +1,5 @@
+#search
+  .search-form-wrap
+    = form_tag search_path, :id => "search-form", :method => :get do
+      = text_field_tag :q, params[:q] || t("searches.form.search_all"), :id => "search-field"
+      %ul#search-results.autocomplete-list
