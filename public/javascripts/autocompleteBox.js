@@ -483,7 +483,7 @@ function initTopicAutocompleteForReclassifying() {
               encodeURIComponent(title),
               function (data) {
                 if (data.success) {
-                  topicsUl.append(data.box);
+                  topicsUl.find(".retag").before(data.box);
                 }
               });
     topicBox.clear();
