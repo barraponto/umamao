@@ -1,104 +1,98 @@
-#question-vote-col
-  float: left
-  width: 4%
-  text-align: center
-  margin-right: 5px
+#question
+  position: relative
 
-  .question-action
-    img
-      width: 25px
-      height: 25px
-  .favorites_count
-    color: #666
-    font-weight: bold
-    font-size: 15px
+  .vote-col
+    +span(1)
+    position: absolute
+    left: -40px
+    top: 0
 
-#question-body-col
-  width: 95%
-  float: left
-  margin-bottom: 10px
+  .body-col
+    width: 95%
+    float: left
+    margin-bottom: 10px
 
-  .flagged
-    font-size: 13px
-    font-weight: bold
-
-  #body
-
-    #close_reason
-      text-align: center
-      padding: 10px
-      width: 95%
-      border: 4px solid #386EA4
-      margin: 10px 5px
+    .flagged
+      font-size: 13px
       font-weight: bold
-      background: #E0EBF1
 
-  .user_info
-    font-size: 12px
-    padding: 8px 4px
-    margin: 10px 2px
-    color: #666
+    #body
 
-    background: #E0EBF1
-    float: right
-
-    .wiki_flag
-      float: right
-      font-weight: bold
-      color: #E55B00
-    .gravatar
-      float: left
-    .user_data
-      margin-left: 2px
-      float: left
-
-      .user_reputation
+      #close_reason
+        text-align: center
+        padding: 10px
+        width: 95%
+        border: 4px solid #386EA4
+        margin: 10px 5px
         font-weight: bold
-        font-size: 14px
-      .time_ago
-        display: block
-        font-weight: bold
-  .actions
-    padding: 10px 0
-    a
+        background: #E0EBF1
+
+    .user_info
       font-size: 12px
-      margin-right: 2px
-      color: $controls-color
-    a#add_follow_up_question
+      padding: 8px 4px
+      margin: 10px 2px
+      color: #666
+
+      background: #E0EBF1
       float: right
-  a#add_comment_link
-    color: $controls-color
 
-.ccontrol
-  padding-bottom: 10px
-  text-decoration: none
-  display: block
-  font-size: 12px
-
-  a
-    color: $link-color
-
-.comments
-  clear: both
-  .comment
-    border-top: 2px dotted #ccc
-    padding-top: 1px
-    margin-top: 1px
-    .comment-content
-      float: left
-      width: 95%
-    .comment-votes
-      float: left
-      display: inline
-      width: 4%
-      .votes_average
-        color: #666
+      .wiki_flag
+        float: right
         font-weight: bold
-        font-size: 12px
+        color: #E55B00
+      .gravatar
         float: left
-        margin-right: 4px
-    .controls
-      clear: both
+      .user_data
+        margin-left: 2px
+        float: left
+
+        .user_reputation
+          font-weight: bold
+          font-size: 14px
+        .time_ago
+          display: block
+          font-weight: bold
+    .actions
+      padding: 10px 0
+      a
+        font-size: 12px
+        margin-right: 2px
+        color: $controls-color
+      a#add_follow_up_question
+        float: right
+    a#add_comment_link
+      color: $controls-color
+
+  .ccontrol
+    padding-bottom: 10px
+    text-decoration: none
+    display: block
+    font-size: 12px
+
+    a
+      color: $link-color
+
+  .comments
+    clear: both
+    .comment
+      border-top: 2px dotted #ccc
+      padding-top: 1px
+      margin-top: 1px
+      .comment-content
+        float: left
+        width: 95%
+      .comment-votes
+        float: left
+        display: inline
+        width: 4%
+        .votes_average
+          color: #666
+          font-weight: bold
+          font-size: 12px
+          float: left
+          margin-right: 4px
+      .controls
+        clear: both
 
 #answers, #questions
   margin-top: 20px
