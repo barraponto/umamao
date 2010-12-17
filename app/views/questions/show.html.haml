@@ -96,16 +96,16 @@
       - @question.comments.each do |comment|
         = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
 
-    -if @question.comments.size != 0
-      .ccontrol
+    .ccontrol
+      -if @question.comments.size != 0
         %a{:href => "", :class => "ccontrol-link"}
           - if @question.comments.size == 1
             = @question.comments.size.to_s + " " + t("models.comment")
           - else
             = @question.comments.size.to_s + " " + t("models.comments")
 
-        - if logged_in?
-          = link_to t("comments.shared.add_comment"), new_question_comment_path(@question), :id => "add_comment_link", :rel => 'nofollow'
+      - if logged_in?
+        = link_to t("comments.shared.add_comment"), new_question_comment_path(@question), :id => "add_comment_link", :rel => 'nofollow'
 
     .forms
       - flag = Flag.new
