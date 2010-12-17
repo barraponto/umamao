@@ -421,7 +421,7 @@ function initTopicAutocompleteForReclassifying() {
   var topicBox = new TopicAutocomplete("#reclassify-autocomplete",
                                        "#reclassify-suggestions",
                                        "/topics/autocomplete");
-  var topicsUl = $("#question-body-col ul.topic-list");
+  var topicsUl = $("#question .body-col ul.topic-list");
 
   var questionUrl = location.href;
 

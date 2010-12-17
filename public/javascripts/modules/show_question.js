@@ -228,6 +228,7 @@ $(document).ready(function() {
 
   $(".ccontrol-link").live("click", function(){
     $(this).parent().next().slideToggle("slow");
+    $(this).parent().prev().slideToggle("slow");
     return false;
   });
 

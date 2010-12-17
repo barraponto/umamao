@@ -1,11 +1,6 @@
 #question
   position: relative
-
-  .vote-col
-    +span(1)
-    position: absolute
-    left: -40px
-    top: 0
+  overflow: auto
 
   .body-col
     width: 95%
@@ -94,9 +89,28 @@
       .controls
         clear: both
 
+  .topic-list
+
+    .topic,.retag
+      margin: 0 5px 5px 0
+      padding: 4px
+      font-size: 10px
+      line-height: 13px
+      height: 13px
+      font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif
+      font-weight: normal
+      max-width: none
+
+    .retag
+      float: left
+
+    .topic
+      +border-radius
+
+      .topic-title
+        vertical-align: middle
+
 #answers, #questions
-  margin-top: 20px
-  clear: both
 
   .wiki_flag
     font-weight: bold
@@ -135,13 +149,16 @@
       float: left
       width: 90%
       margin-bottom: 10px
+
       .actions
         float: left
         padding-top: 10px
+
         a
           color: $controls-color
-          margin: 2px 5px
-          font-size: 12px
+          font-size: 13px
+          line-height: 26px
+          margin-right: 1em
 
       .controls
         .updated

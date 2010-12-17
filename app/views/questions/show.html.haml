@@ -23,15 +23,13 @@
 = error_messages_for 'answer'
 
 #question
-  .vote-col
-    = vote_box(@question, question_path(@question), @question.closed)
 
   %h1.navtitle.title.entry-title.question-title-col
     &= @question.title
     - if @question.closed
       = " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
-  #question-body-col.commentable
+  .body-col.commentable
     .body.markdown
       - if @question.closed && @question.close_reason
         .close_reason
@@ -93,18 +91,22 @@
             .group.navform
               = submit_tag t(".request_closing_details"), :class => "button"
 
-    .ccontrol
-      %a{:href => "", :class => "ccontrol-link"}
-        - if @question.comments.size == 1
-          = @question.comments.size.to_s + " " + t("models.comment")
-        - elsif @question.comments.size != 0
-          = @question.comments.size.to_s + " " + t("models.comments")
 
     .comments
       - @question.comments.each do |comment|
         = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
-    - if logged_in?
-      = link_to t("comments.shared.add_comment"), new_question_comment_path(@question), :id => "add_comment_link", :rel => 'nofollow'
+
+    -if @question.comments.size != 0
+      .ccontrol
+        %a{:href => "", :class => "ccontrol-link"}
+          - if @question.comments.size == 1
+            = @question.comments.size.to_s + " " + t("models.comment")
+          - else
+            = @question.comments.size.to_s + " " + t("models.comments")
+
+        - if logged_in?
+          = link_to t("comments.shared.add_comment"), new_question_comment_path(@question), :id => "add_comment_link", :rel => 'nofollow'
+
     .forms
       - flag = Flag.new
       - flag.flaggeable = @question

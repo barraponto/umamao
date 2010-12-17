@@ -46,25 +46,21 @@
     #container{:class => @current_class}
       #wrapper
         #main
-          = render :partial => "shared/ads/header_ads"
           #block-text
-            .secondary-navigation{:class => @active_subtab.to_s}
-              = yield :subtabs
-              .clear
+
+            - if content_for?(:subtabs)
+              .secondary-navigation{:class => @active_subtab.to_s}
+                =yield :subtabs
+
             .content
-              %p
-                = show_flash_messages(:class => "flash", :markdown => true)
-              = render :partial => "shared/ads/content_ads"
+              - if flash[:key]
+                %p= show_flash_messages(:class => "flash", :markdown => true)
               .inner
                 = content_for?(:content) ? yield(:content) : yield
-                .clear
+
         #sidebar
           = yield :sidebar
 
-          = render :partial => "shared/ads/context_panel_ads"
-
-        .clear
-        = render :partial => "shared/ads/footer_ads"
       .push
 
     = render :partial => "layouts/footer"
