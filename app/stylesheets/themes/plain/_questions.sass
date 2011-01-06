@@ -1,11 +1,8 @@
 #question
   position: relative
-  overflow: auto
+  +pie-clearfix
 
   .body-col
-    width: 95%
-    float: left
-    margin-bottom: 10px
 
     .flagged
       font-size: 13px
@@ -47,47 +44,48 @@
         .time_ago
           display: block
           font-weight: bold
+
     .actions
-      padding: 10px 0
+      font-size: 13px
+      line-height: 26px
+
       a
-        font-size: 12px
         margin-right: 2px
         color: $controls-color
-      a#add_follow_up_question
-        float: right
-    a#add_comment_link
-      color: $controls-color
+
+        &#add_follow_up_question
+          float: right
+
+    .ccontrol
+      font-size: 13px
+      line-height: 26px
+
+      a#add_comment_link
+        color: $controls-color
 
   .ccontrol
-    padding-bottom: 10px
     text-decoration: none
     display: block
-    font-size: 12px
+    font-size: 13px
 
     a
       color: $link-color
 
   .comments
-    clear: both
+    +column(12, true)
+    +prepend(1)
+
     .comment
-      border-top: 2px dotted #ccc
-      padding-top: 1px
-      margin-top: 1px
+      border-top: 1px solid #CCCCCC
+      margin-top: 10px
+      padding-top: 2px
+
       .comment-content
-        float: left
-        width: 95%
-      .comment-votes
-        float: left
-        display: inline
-        width: 4%
-        .votes_average
-          color: #666
-          font-weight: bold
-          font-size: 12px
-          float: left
-          margin-right: 4px
+        +column(10, true)
+        +prepend(1)
+
       .controls
-        clear: both
+        text-align: right
 
   .topic-list
 
@@ -109,6 +107,17 @@
 
       .topic-title
         vertical-align: middle
+
+    + #reclassify-autocomplete,
+    + .add-topic,
+    + .cancel-reclassify
+      font-size: 13px
+      height: 15px
+      line-height: 26px
+      margin: 4px 0 3px
+
+    .cancel-reclassify
+      margin: 5px 0 4px
 
 #answers, #questions
 

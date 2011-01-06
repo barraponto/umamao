@@ -226,9 +226,8 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".ccontrol-link").live("click", function(){
-    $(this).parent().next().slideToggle("slow");
-    $(this).parent().prev().slideToggle("slow");
+  $(".ccontrol-link").click(function(){
+    $(this).next().slideToggle("slow");
     return false;
   });
 

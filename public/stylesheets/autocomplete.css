@@ -21,12 +21,14 @@ ul.autocomplete-list {
 }
 
 ul.autocomplete-list li {
-    margin: 0;
-    padding: 7px;
     cursor: pointer;
+    font-size: 13px;
+    line-height: 26px;
+    margin: 0;
     overflow: hidden;
+    padding: 0 6.5px;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    height: 26px;
 }
 
 ul.autocomplete-list span.desc {

@@ -438,7 +438,7 @@ function initTopicAutocompleteForReclassifying() {
       $(".reclassify .empty").hide();
       $(".reclassify .not-empty").show();
     }
-    $(".reclassify").show();
+    $(".retag").show();
   }
 
   // Shows the autocomplete.
@@ -447,7 +447,7 @@ function initTopicAutocompleteForReclassifying() {
     $("#reclassify-autocomplete").show();
     $(".add-topic").show();
     $(".cancel-reclassify").show();
-    $(".reclassify").hide();
+    $(".retag").hide();
   }
 
   turnOff();
