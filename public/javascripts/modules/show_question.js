@@ -227,7 +227,7 @@ $(document).ready(function() {
   });
 
   $(".ccontrol-link").click(function(){
-    $(this).next().slideToggle("slow");
+    $(this).parent().next().slideToggle("slow");
     return false;
   });
 
