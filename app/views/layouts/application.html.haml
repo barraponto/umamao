@@ -16,7 +16,7 @@
       = current_group.head
       #main-bar{:class => @active_tab}
         #logo
-          = link_to image_tag("default_logo.png", :class => "group_logo", :width => 150], :height => 150], :alt => "Umamão"), domain_url(:custom => current_group.domain)
+          = link_to image_tag("default_logo.png", :class => "group_logo", :width => 150, :height => 75, :alt => "Umamão"), domain_url(:custom => current_group.domain)
 
         = render :partial => "shared/search"
         = render :partial => "shared/topbar"
