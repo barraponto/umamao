@@ -174,17 +174,17 @@
 #question, #answers
 
   .comments
-
     margin-top: 10px
-
-    +column(12, true)
+    +prepend(1)
 
     .comment
-      border-top: 1px solid #CCCCCC
-      padding-top: 2px
+      .comment-votes
+        +column(1)
+        +pull(1)
+        text-align: right
 
-      .comment-content
-        +column(10, true)
+      .comment-info
+        padding: 5px 0 6px
 
       .actions
         float: left
